@@ -1,0 +1,20 @@
+def quick_sort(arr):
+    # Базовый случай: если массив содержит один или ноль элементов, он уже отсортирован
+    if len(arr) <= 1:
+        return arr
+    
+    # Выбираем опорный элемент (pivot) как средний элемент массива
+    pivot = arr[len(arr) // 2]
+    
+    # Формируем подмассивы: элементы меньше pivot, равные pivot и больше pivot
+    left = [x for x in arr if x < pivot]     # элементы меньше pivot
+    middle = [x for x in arr if x == pivot]  # элементы равные pivot
+    right = [x for x in arr if x > pivot]    # элементы больше pivot
+    
+    # Рекурсивно сортируем левый и правый подмассивы, затем объединяем их с middle
+    return quick_sort(left) + middle + quick_sort(right)
+
+
+# Пример использования функции
+numbers = [3, 6, 8, 10, 1, 2, 1]
+print(quick_sort(numbers))  # Выводим отсортированный массив
